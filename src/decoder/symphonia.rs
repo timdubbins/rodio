@@ -56,6 +56,7 @@ impl SymphoniaDecoder {
         mss: MediaSourceStream,
         extension: Option<&str>,
     ) -> symphonia::core::errors::Result<Option<SymphoniaDecoder>> {
+        println!("decoder init");
         let mut hint = Hint::new();
         if let Some(ext) = extension {
             hint.with_extension(ext);
