@@ -20,7 +20,7 @@ use super::DecoderError;
 // Decoder errors are not considered fatal.
 // The correct action is to just get a new packet and try again.
 // But a decode error in more than 3 consecutive packets is fatal.
-const MAX_DECODE_ERRORS: usize = 3;
+const MAX_DECODE_ERRORS: usize = 10;
 
 pub struct SymphoniaDecoder {
     decoder: Box<dyn Decoder>,
