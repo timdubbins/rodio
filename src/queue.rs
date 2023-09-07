@@ -94,6 +94,10 @@ where
         sounds.clear();
         len
     }
+
+    pub fn pop(&self) {
+        self.next_sounds.lock().unwrap().pop();
+    }
 }
 /// The output of the queue. Implements `Source`.
 pub struct SourcesQueueOutput<S> {

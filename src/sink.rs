@@ -61,6 +61,13 @@ impl Sink {
         (sink, queue_rx)
     }
 
+    pub fn pop(&self) {
+        if self.sound_count.load(Ordering::SeqCst) > 0 {
+            self.queue_tx.pop();
+            self.sound_count.fetch_sub(1, Ordering::Relaxed);
+        }
+    }
+
     /// Appends a sound to the queue of sounds to play.
     #[inline]
     pub fn append<S>(&self, source: S)
